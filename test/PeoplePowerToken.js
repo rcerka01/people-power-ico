@@ -4,14 +4,62 @@ const PeoplePowerToken = artifacts.require("PeoplePowerToken");
 
 contract('PeoplePowerToken',  function(accounts) {
 
+    var tokenInstance;
+
+    it('Initialise correct atributes', function() {
+        return PeoplePowerToken.deployed()
+            .then(function(instance) {
+                tokenInstance = instance;
+                return tokenInstance.name();
+            }).then(function(name){
+                assert.equal(name, "People Power", 'Initialize corect name')
+                return tokenInstance.symbol();
+            }).then(function(symbol){
+                assert.equal(symbol, "PP", 'Initialize corect symbol')
+                return tokenInstance.version();
+            }).then(function(version){
+                assert.equal(version, "v1.0", 'Initialize corect version')
+            })  
+    })
+
     it('Sets total supply of tokens', function() {
         return PeoplePowerToken.deployed()
             .then(function(instance) {
-                return instance.totalSupply();
-            })
-            .then(function(totalSupply){
+                tokenInstance = instance;
+                return tokenInstance.totalSupply();
+            }).then(function(totalSupply){
                 assert.equal(totalSupply.toNumber(), 100000000000, 'Supply set to 100 bilion')
+                return tokenInstance.balanceOf(accounts[0]);
+            }).then(function(adminBalance){
+                assert.equal(adminBalance.toNumber(), 100000000000, 'Initial supply alocated to admin address')
             })
     })
 
+    it('transfers token', function() {
+        return PeoplePowerToken.deployed()
+        .then(function(instance) {
+            tokenInstance = instance;
+            return tokenInstance.transfer.call(accounts[1], 100000000001)
+        }).then(assert.fail).catch(function(error) {
+            assert(error.message.indexOf('revert') >= 0, "error message contains revert")
+            return tokenInstance.transfer.call(accounts[1], 25000, {from: accounts[0]})
+        }).then(function(success){
+            assert.equal(success, true, 'returns correct boolean')
+            return tokenInstance.transfer(accounts[1], 25000, {from: accounts[0]})
+        }).then(function(receipt) {
+            assert.equal(receipt.logs.length, 1, 'one event');
+            assert.equal(receipt.logs[0].event, 'Transfer', 'Transfer event exist');
+            assert.equal(receipt.logs[0].args._from, accounts[0], 'logs sender');
+            assert.equal(receipt.logs[0].args._to, accounts[1], 'logs reciever');
+            assert.equal(receipt.logs[0].args._value, 25000, 'logs amount');
+            return tokenInstance.balanceOf(accounts[1])
+        }).then(function(balance) {
+            assert.equal(balance.toNumber(), 25000, 'amount transfered correctly');
+            return tokenInstance.balanceOf(accounts[0])
+        }).then(function(balance) {
+            assert.equal(balance.toNumber(), 99999975000, 'amount recieved correctly');
+        })                              
+    })
+
 });
+ 
