@@ -61,5 +61,25 @@ contract('PeoplePowerToken',  function(accounts) {
         })                              
     })
 
+    it('approve transfer tokens', function() {
+        return PeoplePowerToken.deployed()
+        .then(function(instance) {
+            tokenInstance = instance;
+            return tokenInstance.approve.call(accounts[1], 100)
+        }).then(function(success){
+            assert.equal(success, true, 'returns correct boolean')
+            return tokenInstance.approve(accounts[1], 100, { from: accounts[0] })
+        }).then(function(receipt) {
+            assert.equal(receipt.logs.length, 1, 'one event');
+            assert.equal(receipt.logs[0].event, 'Approval', 'Approval event exist');
+            assert.equal(receipt.logs[0].args._owner, accounts[0], 'logs transfer authorized by');
+            assert.equal(receipt.logs[0].args._spender, accounts[1], 'logs transver authoraized to');
+            assert.equal(receipt.logs[0].args._value, 100, 'logs amount');
+            return tokenInstance.allowance(accounts[0], accounts[1])
+        }).then(function(allowance) {
+            assert.equal(allowance.toNumber(), 100, 'set allowance for account')
+        })                             
+    })
+
 });
  
