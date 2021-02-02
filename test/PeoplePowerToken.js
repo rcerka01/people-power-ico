@@ -5,6 +5,9 @@ const PeoplePowerToken = artifacts.require("PeoplePowerToken");
 contract('PeoplePowerToken',  function(accounts) {
 
     var tokenInstance;
+    var fromAccount;
+    var toAccount;
+    var spenderAccount; 
 
     it('Initialise correct atributes', function() {
         return PeoplePowerToken.deployed()
@@ -81,5 +84,43 @@ contract('PeoplePowerToken',  function(accounts) {
         })                             
     })
 
+    it('handles delegated transfer', function() {
+        return PeoplePowerToken.deployed()
+        .then(function(instance) {
+            tokenInstance = instance;
+            fromAccount = accounts[2]
+            toAccount = accounts[3]
+            spenderAccount = accounts[4]
+            return tokenInstance.transfer(fromAccount, 100, { from: accounts[0] })
+        }).then(function(receipt){
+            return tokenInstance.approve(spenderAccount, 10, { from: fromAccount })
+        }).then(function(receipt){
+            return tokenInstance.transferFrom(fromAccount, toAccount, 999, { from: spenderAccount })
+        }).then(assert.fail).catch(function(error) {
+            assert(error.message.indexOf('revert') >= 0, "error message contains revert")
+            return tokenInstance.transferFrom(fromAccount, toAccount, 21, { from: spenderAccount })
+        }).then(assert.fail).catch(function(error) {
+            assert(error.message.indexOf('revert') >= 0, "not transfering amount larger than approved")
+            return tokenInstance.transferFrom.call(fromAccount, toAccount, 10, { from: spenderAccount })
+        }).then(function(success){
+            assert.equal(success, true, 'returns correct boolean')
+            return tokenInstance.transferFrom(fromAccount, toAccount, 10, { from: spenderAccount })
+        }).then(function(receipt) {
+            assert.equal(receipt.logs.length, 1, 'one event');
+            assert.equal(receipt.logs[0].event, 'Transfer', 'Transfer event exist');
+            assert.equal(receipt.logs[0].args._from, fromAccount, 'logs sender');
+            assert.equal(receipt.logs[0].args._to, toAccount, 'logs reciever');
+            assert.equal(receipt.logs[0].args._value, 10, 'logs amount');
+            return tokenInstance.balanceOf(fromAccount)
+        }).then(function(balance){
+            assert.equal(balance, 90, 'deducts balance correctly')
+            return tokenInstance.balanceOf(toAccount)
+        }).then(function(balance){
+            assert.equal(balance, 10, 'adds balance correctly')
+            return tokenInstance.allowance(fromAccount, spenderAccount)
+        }).then(function(allowance) {
+            assert.equal(allowance.toNumber(), 00, 'deduct correct mount from allowance')
+        })               
+    })
 });
  
