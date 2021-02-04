@@ -1,0 +1,560 @@
+{
+  "contractName": "PeoplePowerTokenSale",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract PeoplePowerToken",
+          "name": "_tokenContract",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract PeoplePowerToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract PeoplePowerToken\",\"name\":\"_tokenContract\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract PeoplePowerToken\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerTokenSale.sol\":\"PeoplePowerTokenSale\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerToken.sol\":{\"keccak256\":\"0xb05f0a1a2e76df221f5c0413b1aa9fe27e4fab5f6fabca832ea6b08651f85e30\",\"urls\":[\"bzz-raw://737932e2d51bcc514f64b2820255f5e992bfb24e8c264cf76093e80f9cb112a3\",\"dweb:/ipfs/QmSXAg3ZKcbK2dy6QiWF3zbgVEHkuBdeY6GmVac3zZanwf\"]},\"/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerTokenSale.sol\":{\"keccak256\":\"0xf2e8f8d1e0577358760bf0ef08300331201856eaba3f0d40665a69332b2deccc\",\"urls\":[\"bzz-raw://9f17d28cb09bcfe5379ee352aa9c040427ceb96b6d5bdf609f95543639bf85b1\",\"dweb:/ipfs/QmTMaHwjNRvQvBLWPLnAE875S2CrqrPYBCx2gedM6mygGn\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516101633803806101638339818101604052602081101561003357600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505060d0806100936000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806355a373d614602d575b600080fd5b60336075565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea265627a7a72315820c25550b38926d1b7dcaa1b6c0f65f6e06471a06554d0cfc0c4427ac103a6b9ff64736f6c63430005100032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806355a373d614602d575b600080fd5b60336075565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea265627a7a72315820c25550b38926d1b7dcaa1b6c0f65f6e06471a06554d0cfc0c4427ac103a6b9ff64736f6c63430005100032",
+  "sourceMap": "100:231:1:-;;;199:130;8:9:-1;5:2;;;30:1;27;20:12;5:2;199:130:1;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;199:130:1;;;;;;;;;;;;;;;;270:10;262:5;;:18;;;;;;;;;;;;;;;;;;199:130;100:231;;;;;;",
+  "deployedSourceMap": "100:231:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;100:231:1;;;;;;;;;;;;;;;;;;;155:37;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nimport './PeoplePowerToken.sol';\n\ncontract PeoplePowerTokenSale {\n    address admin;\n    PeoplePowerToken public tokenContract;\n\n    constructor (PeoplePowerToken _tokenContract) public {\n        admin = msg.sender;\n       // tokenContract = _tokenContract;\n    }\n}\n",
+  "sourcePath": "/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerTokenSale.sol",
+  "ast": {
+    "absolutePath": "/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerTokenSale.sol",
+    "exportedSymbols": {
+      "PeoplePowerTokenSale": [
+        204
+      ]
+    },
+    "id": 205,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 187,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:1"
+      },
+      {
+        "absolutePath": "/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerToken.sol",
+        "file": "./PeoplePowerToken.sol",
+        "id": 188,
+        "nodeType": "ImportDirective",
+        "scope": 205,
+        "sourceUnit": 186,
+        "src": "66:32:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 204,
+        "linearizedBaseContracts": [
+          204
+        ],
+        "name": "PeoplePowerTokenSale",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 190,
+            "name": "admin",
+            "nodeType": "VariableDeclaration",
+            "scope": 204,
+            "src": "136:13:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 189,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "136:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 192,
+            "name": "tokenContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 204,
+            "src": "155:37:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_PeoplePowerToken_$185",
+              "typeString": "contract PeoplePowerToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 191,
+              "name": "PeoplePowerToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 185,
+              "src": "155:16:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PeoplePowerToken_$185",
+                "typeString": "contract PeoplePowerToken"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 202,
+              "nodeType": "Block",
+              "src": "252:77:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 200,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 197,
+                      "name": "admin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 190,
+                      "src": "262:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 198,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 219,
+                        "src": "270:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 199,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "270:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "262:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 201,
+                  "nodeType": "ExpressionStatement",
+                  "src": "262:18:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 203,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 195,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 194,
+                  "name": "_tokenContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 203,
+                  "src": "212:31:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_PeoplePowerToken_$185",
+                    "typeString": "contract PeoplePowerToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 193,
+                    "name": "PeoplePowerToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 185,
+                    "src": "212:16:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PeoplePowerToken_$185",
+                      "typeString": "contract PeoplePowerToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "211:33:1"
+            },
+            "returnParameters": {
+              "id": 196,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "252:0:1"
+            },
+            "scope": 204,
+            "src": "199:130:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 205,
+        "src": "100:231:1"
+      }
+    ],
+    "src": "32:300:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerTokenSale.sol",
+      "exportedSymbols": {
+        "PeoplePowerTokenSale": [
+          204
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 187,
+        "name": "PragmaDirective",
+        "src": "32:32:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 186,
+          "absolutePath": "/home/ray/Dropbox/ETHEREUM/people-power-ico/contracts/PeoplePowerToken.sol",
+          "file": "./PeoplePowerToken.sol",
+          "scope": 205,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 188,
+        "name": "ImportDirective",
+        "src": "66:32:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            204
+          ],
+          "name": "PeoplePowerTokenSale",
+          "scope": 205
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "admin",
+              "scope": 204,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "nonpayable",
+                  "type": "address"
+                },
+                "id": 189,
+                "name": "ElementaryTypeName",
+                "src": "136:7:1"
+              }
+            ],
+            "id": 190,
+            "name": "VariableDeclaration",
+            "src": "136:13:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tokenContract",
+              "scope": 204,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract PeoplePowerToken",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "PeoplePowerToken",
+                  "referencedDeclaration": 185,
+                  "type": "contract PeoplePowerToken"
+                },
+                "id": 191,
+                "name": "UserDefinedTypeName",
+                "src": "155:16:1"
+              }
+            ],
+            "id": 192,
+            "name": "VariableDeclaration",
+            "src": "155:37:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 204,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenContract",
+                      "scope": 203,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract PeoplePowerToken",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "PeoplePowerToken",
+                          "referencedDeclaration": 185,
+                          "type": "contract PeoplePowerToken"
+                        },
+                        "id": 193,
+                        "name": "UserDefinedTypeName",
+                        "src": "212:16:1"
+                      }
+                    ],
+                    "id": 194,
+                    "name": "VariableDeclaration",
+                    "src": "212:31:1"
+                  }
+                ],
+                "id": 195,
+                "name": "ParameterList",
+                "src": "211:33:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 196,
+                "name": "ParameterList",
+                "src": "252:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 190,
+                              "type": "address",
+                              "value": "admin"
+                            },
+                            "id": 197,
+                            "name": "Identifier",
+                            "src": "262:5:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 219,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 198,
+                                "name": "Identifier",
+                                "src": "270:3:1"
+                              }
+                            ],
+                            "id": 199,
+                            "name": "MemberAccess",
+                            "src": "270:10:1"
+                          }
+                        ],
+                        "id": 200,
+                        "name": "Assignment",
+                        "src": "262:18:1"
+                      }
+                    ],
+                    "id": 201,
+                    "name": "ExpressionStatement",
+                    "src": "262:18:1"
+                  }
+                ],
+                "id": 202,
+                "name": "Block",
+                "src": "252:77:1"
+              }
+            ],
+            "id": 203,
+            "name": "FunctionDefinition",
+            "src": "199:130:1"
+          }
+        ],
+        "id": 204,
+        "name": "ContractDefinition",
+        "src": "100:231:1"
+      }
+    ],
+    "id": 205,
+    "name": "SourceUnit",
+    "src": "32:300:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x6D9c349f98EDf111DaE3747F67478E580583D75e",
+      "transactionHash": "0xc4fee06e4f99954c5476ffdae3b86bd58c114c361ee62bc2ddaf374f5620cf62"
+    }
+  },
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-02-03T23:40:32.571Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

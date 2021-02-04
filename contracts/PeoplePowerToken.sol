@@ -4,7 +4,7 @@ pragma solidity >=0.4.22 <0.9.0;
 contract PeoplePowerToken {
 
     string public name = "People Power";
-    string public symbol = "PP";
+    string public symbol = "PPD";
     string public version = "v1.0";
 
     uint256 public totalSupply;

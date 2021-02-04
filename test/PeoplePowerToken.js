@@ -1,5 +1,3 @@
-const _deploy_contracts = require("../migrations/2_deploy_contracts");
-
 const PeoplePowerToken = artifacts.require("PeoplePowerToken");
 
 contract('PeoplePowerToken',  function(accounts) {
@@ -18,7 +16,7 @@ contract('PeoplePowerToken',  function(accounts) {
                 assert.equal(name, "People Power", 'Initialize corect name')
                 return tokenInstance.symbol();
             }).then(function(symbol){
-                assert.equal(symbol, "PP", 'Initialize corect symbol')
+                assert.equal(symbol, "PPD", 'Initialize corect symbol')
                 return tokenInstance.version();
             }).then(function(version){
                 assert.equal(version, "v1.0", 'Initialize corect version')
