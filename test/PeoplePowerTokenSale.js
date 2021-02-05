@@ -62,5 +62,24 @@ contract('PeoplePowerTokenSale',  function(accounts) {
             .then(assert.fail).catch(function(error) {
                 assert(error.message.indexOf('revert') >= 0, "amount sent cannot be less than token price") 
             })            
+    })    
+    
+    it('End token sale', function() { 
+        return PeoplePowerToken.deployed()
+            .then(function(instance) {
+                tokenInstance = instance;
+                return PeoplePowerTokenSale.deployed()
+            }).then(function(instance) {
+                tokenSaleInstance = instance;
+                return tokenSaleInstance.endSale({ from: buyer });
+            }).then(assert.fail).catch(function(error) {
+                assert(error.message.indexOf('revert') >= 0, "can be called from admin account only") 
+                return tokenSaleInstance.endSale({ from: admin });
+            }).then(function(receipt) {
+                return tokenInstance.balanceOf(admin)
+            }).then(function(balance) {
+                assert.equal(balance.toNumber(), 99999999990, 'return all remaining balance to admin');
+                return tokenSaleInstance.tokenPrice()
+            }).then(assert.fail).catch(function(error){})            
     })
 });
